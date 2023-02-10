@@ -5,15 +5,15 @@ import os
 from github import Github
 
 # generate password
-def generatePassword():
-    return ''.join(random.choice(string.printable) for i in range(300))
+def generatePassword(bytes):
+    return ''.join(random.choice(string.printable) for i in range(bytes))
 
 def main():
     while(True):
         g = Github("key here")
         repo = g.get_repo("ToutBaiser/keyX")
         contents = repo.get_contents("key.nigger")
-        commit = generatePassword()
+        commit = generatePassword(300)
         repo.update_file(contents.path, "Key Update", commit, contents.sha, branch="main")
         sleep(86400)
 if __name__ == "__main__":
